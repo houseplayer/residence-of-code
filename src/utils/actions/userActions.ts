@@ -6,12 +6,10 @@ import { revalidatePath } from 'next/cache';
 
 export const addUser = async (formData: UserFormSchema) => {
   try {
-    console.log(formData);
-    const email = formData.email;
-    await prisma.user.create({ data: { email } });
+    const { email, password } = formData;
+    await prisma.user.create({ data: { email, password } });
     return { success: true, message: 'user added' };
   } catch (error) {
-    console.log(error.message);
     let message = 'Create user failed. Please try again';
 
     if (String(error.message).includes('Unique constraint failed on the fields: (`email`)')) {

@@ -11,12 +11,12 @@ interface Props {
 }
 
 const ListItem = ({ listElement, setOptimisticData }: Props) => {
-  const { text, id, createdAt } = listElement;
+  const { email, password, id, createdAt } = listElement;
 
   const formAction = async () => {
     setOptimisticData({
       action: Action.DELETE,
-      user: { id, text, createdAt },
+      user: { id, email, password, createdAt },
     });
 
     const response = await deleteUser(id);
@@ -33,8 +33,9 @@ const ListItem = ({ listElement, setOptimisticData }: Props) => {
       <form action={formAction} className="basis-1/12">
         <Button label="X" className="py-0" />
       </form>
-      <p className="basis-2/6">{createdAt.toLocaleDateString()}</p>
-      <p className="basis-4/6">{text}</p>
+      <p className="basis-1/3">{createdAt.toLocaleDateString()}</p>
+      <p className="basis-1/3">{email}</p>
+      <p className="basis-1/3">{password}</p>
     </div>
   );
 };

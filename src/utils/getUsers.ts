@@ -6,7 +6,8 @@ export const getUsers = async () => {
 
   const mappedUsers = users.map((user) => ({
     id: user.id,
-    text: user.email,
+    email: user.email,
+    password: user.password,
     createdAt: user.createdAt,
   }));
 

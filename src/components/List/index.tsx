@@ -11,8 +11,9 @@ const List = ({ data, setOptimisticData }: Props) => {
     <div className="mb-4">
       <div className="flex items-center py-1 border-b-1 border-black">
         <p className="basis-1/12"></p>
-        <p className="basis-2/6">created</p>
-        <p className="basis-4/6">email</p>
+        <p className="basis-1/3">created</p>
+        <p className="basis-1/3">email</p>
+        <p className="basis-1/3">password</p>
       </div>
       {data?.map((listElement: ListElement) => (
         <ListItem

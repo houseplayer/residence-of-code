@@ -31,7 +31,8 @@ const AddUserForm = ({ setOptimisticData }: Props) => {
         action: Action.ADD,
         user: {
           id: String(Math.random()),
-          text: formData.email,
+          email: formData.email,
+          password: formData.password,
           createdAt: new Date(),
         },
       });
