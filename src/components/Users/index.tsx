@@ -15,7 +15,7 @@ const Users = ({ users }: Props) => {
     (state, { action, user }: { action: Action; user: ListElement }) => {
       switch (action) {
         case 'ADD':
-          return [...state, user];
+          return [user, ...state];
         case 'DELETE':
           return state.filter(({ id }) => id !== user.id);
         default:
