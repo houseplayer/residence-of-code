@@ -26,8 +26,8 @@ const Users = ({ users }: Props) => {
 
   return (
     <>
-      <List data={optimisticUsers} setOptimisticData={setOptimisticUser} />
       <AddUserForm setOptimisticData={setOptimisticUser} />
+      <List data={optimisticUsers} setOptimisticData={setOptimisticUser} />
     </>
   );
 };
