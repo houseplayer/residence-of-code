@@ -9,7 +9,7 @@ const Input = forwardRef<HTMLInputElement, Props>(({ className, error, ...props 
   return (
     <>
       <input className={clsx(className, 'border-1 border-black px-2 py-1')} ref={ref} {...props} />
-      <p className="text-red-500 text-sm">{error}</p>
+      {error && <p className="text-red-500 text-sm">{error}</p>}
     </>
   );
 });

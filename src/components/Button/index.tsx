@@ -1,24 +1,20 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { experimental_useFormStatus } from 'react-dom';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
-  className?: string;
   formAction?: (formData: FormData) => Promise<void>;
 }
 
-const Button = ({ label, className, formAction }: Props) => {
-  const { pending } = experimental_useFormStatus();
-
+const Button = ({ label, className, formAction, disabled }: Props) => {
   return (
     <button
-      disabled={pending}
       formAction={formAction}
       className={clsx(className, 'border-black border-1 px-2 py-1')}
+      disabled={disabled}
     >
-      {label}
+      {disabled ? 'saving...' : label}
     </button>
   );
 };

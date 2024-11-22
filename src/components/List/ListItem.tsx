@@ -29,13 +29,16 @@ const ListItem = ({ listElement, setOptimisticData }: Props) => {
   };
 
   return (
-    <div key={id} className="flex items-center py-1 border-b-1 border-black">
-      <form action={formAction} className="basis-1/12">
-        <Button label="X" className="py-0" />
-      </form>
+    <div
+      key={id}
+      className="flex flex-col sm:flex-row items-center border-1 sm:border-0 sm:border-b-1 border-black mb-2 w-72 sm:w-full mx-auto py-4"
+    >
       <p className="basis-1/3">{createdAt.toLocaleDateString()}</p>
       <p className="basis-1/3">{email}</p>
       <p className="basis-1/3">{password}</p>
+      <form action={formAction} className="basis-1/12 mt-2">
+        <Button label="X" className="w-8 h-8 flex items-center justify-center" />
+      </form>
     </div>
   );
 };

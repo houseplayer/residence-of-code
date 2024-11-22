@@ -18,7 +18,7 @@ const AddUserForm = ({ setOptimisticData }: Props) => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<UserFormSchema>({
     resolver: zodResolver(userFormSchema),
     mode: 'onSubmit',
@@ -53,7 +53,7 @@ const AddUserForm = ({ setOptimisticData }: Props) => {
 
   return (
     <>
-      <form onSubmit={formAction} className="flex justify-center flex-col w-1/2 m-auto">
+      <form onSubmit={formAction} className="flex justify-center flex-col w-72 max-w-1/2 m-auto">
         <Input {...register('email')} error={errors.email?.message} placeholder="email" />
         <Input
           {...register('password')}
@@ -61,7 +61,7 @@ const AddUserForm = ({ setOptimisticData }: Props) => {
           placeholder="password"
           className="mt-2"
         />
-        <Button label="create user" className="mt-2" />
+        <Button label="create user" className="mt-2" disabled={isSubmitting} />
       </form>
     </>
   );

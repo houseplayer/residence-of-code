@@ -9,11 +9,11 @@ export interface Props {
 const List = ({ data, setOptimisticData }: Props) => {
   return (
     <div className="mb-4">
-      <div className="flex items-center py-1 border-b-1 border-black">
-        <p className="basis-1/12"></p>
+      <div className="items-center py-1 border-b-1 border-black hidden sm:flex">
         <p className="basis-1/3">created</p>
         <p className="basis-1/3">email</p>
         <p className="basis-1/3">password</p>
+        <p className="basis-1/12"></p>
       </div>
       {data?.map((listElement: ListElement) => (
         <ListItem
