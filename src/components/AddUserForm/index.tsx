@@ -53,7 +53,10 @@ const AddUserForm = ({ setOptimisticData }: Props) => {
 
   return (
     <>
-      <form onSubmit={formAction} className="flex justify-center flex-col w-72 max-w-1/2 m-auto">
+      <form
+        onSubmit={formAction}
+        className="flex justify-center flex-col w-72 max-w-1/2 m-auto my-4"
+      >
         <Input {...register('email')} error={errors.email?.message} placeholder="email" />
         <Input
           {...register('password')}
