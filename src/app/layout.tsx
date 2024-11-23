@@ -1,4 +1,5 @@
 import Toast from '@/components/Toast';
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import './globals.css';
 export const metadata = {
   title: 'NextJS template with TypeScript, TailwindCSS, and MongoDB',
@@ -8,10 +9,12 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-        <Toast />
-      </body>
+      <UserProvider>
+        <body>
+          {children}
+          <Toast />
+        </body>
+      </UserProvider>
     </html>
   );
 }
