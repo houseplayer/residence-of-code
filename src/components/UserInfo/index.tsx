@@ -7,11 +7,11 @@ const UserInfo = () => {
 
   return (
     user && (
-      <>
+      <div className="flex justify-center flex-col w-72 max-w-1/2 m-auto mt-4 border-1 px-3 py-2">
         <p> {user.name}</p>
         <p> {user.nickname}</p>
         <p> {user.updated_at}</p>
-      </>
+      </div>
     )
   );
 };

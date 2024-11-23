@@ -1,26 +1,16 @@
 import { getUsers } from '@/utils/getUsers';
 import Users from '../components/Users';
 import UserInfo from '@/components/UserInfo';
+import Nav from '@/components/Nav';
 
 const Home = async () => {
   const users = await getUsers();
 
   return (
     <main className="p-4">
-      <a href="/api/auth/login" className="mx-2" tabIndex={0}>
-        Log in
-      </a>
-
-      <a href="/api/auth/logout" className="mx-2" tabIndex={0}>
-        Log out
-      </a>
-
-      <a href="/api/auth/signup" className="mx-2" tabIndex={0}>
-        Sign Up
-      </a>
-
-      <Users users={users} />
+      <Nav />
       <UserInfo />
+      <Users users={users} />
     </main>
   );
 };
