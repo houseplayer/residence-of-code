@@ -24,6 +24,7 @@ export const sendEmailAction = async () => {
     });
     return { success: true, message: 'email sent successfully' };
   } catch (error) {
+    console.log(error);
     return { success: false, message: 'sending email failed' };
   }
 };
