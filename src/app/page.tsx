@@ -2,6 +2,7 @@ import { getUsers } from '@/utils/getUsers';
 import Users from '../components/Users';
 import UserInfo from '@/components/UserInfo';
 import Nav from '@/components/Nav';
+import EmailForm from '@/components/emailForm';
 
 const Home = async () => {
   const users = await getUsers();
@@ -11,6 +12,7 @@ const Home = async () => {
       <Nav />
       <UserInfo />
       <Users users={users} />
+      <EmailForm className="w-1/3" />
     </main>
   );
 };

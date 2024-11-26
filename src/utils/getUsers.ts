@@ -1,5 +1,5 @@
 import { User } from '@/types';
-import prisma from '@/utils/prisma';
+import prisma from '@/lib/prisma';
 
 export const getUsers = async () => {
   const users: User[] = await prisma.user.findMany({ orderBy: { createdAt: 'desc' } });

@@ -1,7 +1,7 @@
 'use server';
 
 import { userFormSchema, UserFormSchema } from '@/components/AddUserForm/schema';
-import prisma from '../../utils/prisma';
+import prisma from '../../lib/prisma';
 import { revalidatePath } from 'next/cache';
 import { validateData } from '../validateData';
 

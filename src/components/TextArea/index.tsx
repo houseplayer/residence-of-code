@@ -1,14 +1,14 @@
 import { clsx } from 'clsx';
 import { forwardRef } from 'react';
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Props extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   error?: string;
 }
 
-const Input = forwardRef<HTMLInputElement, Props>(({ className, error, ...props }, ref) => {
+const TextArea = forwardRef<HTMLTextAreaElement, Props>(({ className, error, ...props }, ref) => {
   return (
     <>
-      <input
+      <textarea
         className={clsx(className, 'border-1 border-black px-2 py-1 my-2')}
         ref={ref}
         {...props}
@@ -18,6 +18,6 @@ const Input = forwardRef<HTMLInputElement, Props>(({ className, error, ...props 
   );
 });
 
-Input.displayName = 'Input';
+TextArea.displayName = 'TextArea';
 
-export default Input;
+export default TextArea;
