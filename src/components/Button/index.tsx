@@ -7,12 +7,13 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   formAction?: (formData: FormData) => Promise<void>;
 }
 
-const Button = ({ label, className, formAction, disabled }: Props) => {
+const Button = ({ label, className, formAction, disabled, onClick }: Props) => {
   return (
     <button
-      formAction={formAction}
       className={clsx(className, 'border-black border-1 px-2 py-1')}
+      formAction={formAction}
       disabled={disabled}
+      onClick={onClick}
     >
       {disabled ? 'saving...' : label}
     </button>

@@ -7,6 +7,8 @@ export interface Props {
 }
 
 const List = ({ data, setOptimisticData }: Props) => {
+  if (!data.length) return;
+
   return (
     <div className="mb-4">
       <div className="items-center py-1 border-b-1 border-black hidden sm:flex">

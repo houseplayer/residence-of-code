@@ -1,27 +1,23 @@
 'use client';
 
 import { useUser } from '@auth0/nextjs-auth0/client';
+import Link from '../Link';
 
 const Nav = () => {
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
+  if (isLoading) return;
 
-  return (
+  return user ? (
+    <Link href="/api/auth/logout">Log out</Link>
+  ) : (
     <>
-      {user ? (
-        <a href="/api/auth/logout" className="mx-2" tabIndex={0}>
-          Log out
-        </a>
-      ) : (
-        <div>
-          <a href="/api/auth/login" className="mx-2" tabIndex={0}>
-            Log in
-          </a>
+      <Link href="/api/auth/login" className="mx-2">
+        Log in
+      </Link>
 
-          <a href="/api/auth/signup" className="mx-2" tabIndex={0}>
-            Sign Up
-          </a>
-        </div>
-      )}
+      <Link href="/api/auth/signup" className="mx-2">
+        Sign Up
+      </Link>
     </>
   );
 };
