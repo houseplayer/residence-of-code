@@ -9,8 +9,7 @@ export const sendEmailAction = async (formData: SendEmailSchema) => {
     validateData(formData, sendEmailSchema);
 
     await transporter.sendMail({
-      from: '"master of puppets👻"',
-      to: 'lukasz.szymczyk@gmail.com',
+      to: formData.recipient,
       subject: formData.title,
       text: formData.content,
     });
