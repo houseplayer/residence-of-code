@@ -1,18 +1,18 @@
-import { getUsers } from '@/utils/getUsers';
-import Users from '../components/Users';
+import { getSubscribers } from '@/utils/getSubscribers';
 import UserInfo from '@/components/UserInfo';
 import Nav from '@/components/Nav';
 import EmailForm from '@/components/emailForm';
+import Subscribers from '@/components/Subscribers';
 
 const Home = async () => {
-  const users = await getUsers();
+  const subscribers = await getSubscribers();
 
   return (
     <main className="p-4">
       <Nav />
       <UserInfo />
-      <Users users={users} />
-      <EmailForm className="w-1/3" />
+      <Subscribers subscribers={subscribers} />
+      <EmailForm className="w-72" />
     </main>
   );
 };

@@ -26,7 +26,7 @@ const EmailForm = ({ className }: Props) => {
     reValidateMode: 'onChange',
   });
 
-  const sendEmail = handleSubmit(async (formData: SendEmailSchema) => {
+  const sendEmail = async (formData: SendEmailSchema) => {
     const response = await sendEmailAction(formData);
 
     if (response.success) {
@@ -35,11 +35,11 @@ const EmailForm = ({ className }: Props) => {
     } else {
       toast.error(response.message);
     }
-  });
+  };
 
   return (
-    <form onSubmit={sendEmail} className={clsx(className, 'flex flex-col mx-auto')}>
-      <Input {...register('recipient')} error={errors.recipient?.message} placeholder="recipient" />
+    <form onSubmit={handleSubmit(sendEmail)} className={clsx(className, 'flex flex-col mx-auto')}>
+      <h1 className="mx-auto font-semibold">Send email to subscribers</h1>
       <Input {...register('title')} error={errors.title?.message} placeholder="title" />
       <TextArea {...register('content')} error={errors.content?.message} placeholder="content" />
       <Button label="send email" disabled={isSubmitting} disabledLabel="sending..." />

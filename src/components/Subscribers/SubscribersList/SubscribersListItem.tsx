@@ -1,25 +1,25 @@
 'use client';
 
-import { Action, ListElement } from '@/types';
-import Button from '../Button';
-import { deleteUser } from '@/utils/actions/userActions';
+import { Action, Subscriber } from '@/types';
+import Button from '../../Button';
+import { deleteSubscriberAction } from '@/utils/actions/subscriberActions';
 import toast from 'react-hot-toast';
 
 interface Props {
-  listElement: ListElement;
-  setOptimisticData: (action: { action: Action; user: ListElement }) => void;
+  listElement: Subscriber;
+  setOptimisticData: (action: { action: Action; subscriber: Subscriber }) => void;
 }
 
-const ListItem = ({ listElement, setOptimisticData }: Props) => {
-  const { email, password, id, createdAt } = listElement;
+const SubscribersListItem = ({ listElement, setOptimisticData }: Props) => {
+  const { email, name, id, createdAt } = listElement;
 
-  const formAction = async () => {
+  const deleteUser = async () => {
     setOptimisticData({
       action: Action.DELETE,
-      user: { id, email, password, createdAt },
+      subscriber: { id, email, name, createdAt },
     });
 
-    const response = await deleteUser(id);
+    const response = await deleteSubscriberAction(id);
 
     if (!response.success) {
       toast.error(response.message);
@@ -35,12 +35,12 @@ const ListItem = ({ listElement, setOptimisticData }: Props) => {
     >
       <p className="basis-1/3">{createdAt.toLocaleDateString()}</p>
       <p className="basis-1/3">{email}</p>
-      <p className="basis-1/3">{password}</p>
-      <form action={formAction} className="basis-1/12 mt-2 sm:mt-0">
+      <p className="basis-1/3">{name}</p>
+      <form action={deleteUser} className="basis-1/12 mt-2 sm:mt-0">
         <Button label="X" className="w-8 h-8 flex items-center justify-center" />
       </form>
     </div>
   );
 };
 
-export default ListItem;
+export default SubscribersListItem;

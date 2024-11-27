@@ -1,16 +1,8 @@
-export interface ListElement {
+export interface Subscriber {
   id: string;
   email: string;
-  password: string;
+  name: string;
   createdAt: Date;
-}
-
-export interface User {
-  id: string;
-  email: string;
-  password: string;
-  createdAt: Date;
-  updatedAt: Date | null;
 }
 
 export enum Action {
