@@ -9,11 +9,11 @@ export interface Props {
 }
 
 const SubscribersList = ({ subscribers }: Props) => {
-  if (!subscribers.length) return;
-
   const { optimisticSubscribers, setOptimisticSubscribers } = useOptimisticSubscribers({
     subscribers,
   });
+
+  if (!subscribers.length) return;
 
   return (
     <div className="mb-4">
