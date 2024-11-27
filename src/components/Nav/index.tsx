@@ -1,23 +1,43 @@
 'use client';
 
 import { useUser } from '@auth0/nextjs-auth0/client';
-import Link from '../Link';
+import Link from 'next/link';
+import CustomLink from '../Link';
+import { usePathname } from 'next/navigation';
+import { routes } from '@/app/routes';
 
 const Nav = () => {
-  const { isLoading, user } = useUser();
+  const { user } = useUser();
 
-  if (isLoading) return;
+  const currentPath = usePathname();
 
-  return user ? (
-    <Link href="/api/auth/logout">Log out</Link>
+  const authRoutes = user ? (
+    <CustomLink href={routes.logout}>Log out</CustomLink>
   ) : (
     <>
-      <Link href="/api/auth/login" className="mx-2">
+      <CustomLink href={routes.login} className="mx-2">
         Log in
-      </Link>
-
-      <Link href="/api/auth/signup" className="mx-2">
+      </CustomLink>
+      <CustomLink href={routes.signup} className="mx-2">
         Sign Up
+      </CustomLink>
+    </>
+  );
+
+  return (
+    <>
+      {authRoutes}
+      <Link
+        href={routes.home}
+        className={currentPath === routes.home ? 'border-slate-700 border-b-2 ml-4' : 'ml-4'}
+      >
+        Home
+      </Link>
+      <Link
+        href={routes.admin}
+        className={currentPath === routes.admin ? 'border-slate-700 border-b-2 ml-4' : 'ml-4'}
+      >
+        Admin
       </Link>
     </>
   );

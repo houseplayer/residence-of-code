@@ -38,7 +38,10 @@ const EmailForm = ({ className }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(sendEmail)} className={clsx(className, 'flex flex-col mx-auto')}>
+    <form
+      onSubmit={handleSubmit(sendEmail)}
+      className={clsx(className, 'flex flex-col mx-auto my-4')}
+    >
       <h1 className="mx-auto font-semibold">Send email to subscribers</h1>
       <Input {...register('title')} error={errors.title?.message} placeholder="title" />
       <TextArea {...register('content')} error={errors.content?.message} placeholder="content" />

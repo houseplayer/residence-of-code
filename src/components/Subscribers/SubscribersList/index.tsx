@@ -1,13 +1,19 @@
-import { Action, Subscriber } from '@/types';
+'use client';
+
+import { Subscriber } from '@/types';
 import SubscribersListItem from './SubscribersListItem';
+import useOptimisticSubscribers from '@/hooks/useOptimisticSubscribers';
 
 export interface Props {
-  data: Subscriber[];
-  setOptimisticData: (action: { action: Action; subscriber: Subscriber }) => void;
+  subscribers: Subscriber[];
 }
 
-const SubscribersList = ({ data, setOptimisticData }: Props) => {
-  if (!data.length) return;
+const SubscribersList = ({ subscribers }: Props) => {
+  if (!subscribers.length) return;
+
+  const { optimisticSubscribers, setOptimisticSubscribers } = useOptimisticSubscribers({
+    subscribers,
+  });
 
   return (
     <div className="mb-4">
@@ -18,11 +24,11 @@ const SubscribersList = ({ data, setOptimisticData }: Props) => {
         <p className="basis-1/3">name</p>
         <p className="basis-1/12"></p>
       </div>
-      {data?.map((listElement: Subscriber) => (
+      {optimisticSubscribers?.map((listElement: Subscriber) => (
         <SubscribersListItem
           key={listElement.id}
           listElement={listElement}
-          setOptimisticData={setOptimisticData}
+          setOptimisticData={setOptimisticSubscribers}
         />
       ))}
     </div>

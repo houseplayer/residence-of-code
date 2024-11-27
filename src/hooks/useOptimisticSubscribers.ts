@@ -1,7 +1,3 @@
-'use client';
-
-import AddSubscriberForm from '@/components/Subscribers/AddSubscriberForm';
-import SubscribersList from '@/components/Subscribers/SubscribersList';
 import { Action, Subscriber } from '@/types';
 import { experimental_useOptimistic } from 'react';
 
@@ -9,7 +5,7 @@ interface Props {
   subscribers: Subscriber[];
 }
 
-const Subscribers = ({ subscribers }: Props) => {
+const useOptimisticSubscribers = ({ subscribers }: Props) => {
   const [optimisticSubscribers, setOptimisticSubscribers] = experimental_useOptimistic(
     subscribers,
     (state, { action, subscriber }: { action: Action; subscriber: Subscriber }) => {
@@ -23,13 +19,7 @@ const Subscribers = ({ subscribers }: Props) => {
       }
     },
   );
-
-  return (
-    <>
-      <AddSubscriberForm setOptimisticData={setOptimisticSubscribers} />
-      <SubscribersList data={optimisticSubscribers} setOptimisticData={setOptimisticSubscribers} />
-    </>
-  );
+  return { optimisticSubscribers, setOptimisticSubscribers };
 };
 
-export default Subscribers;
+export default useOptimisticSubscribers;
