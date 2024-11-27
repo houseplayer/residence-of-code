@@ -8,15 +8,15 @@ import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { subscriberFormSchema, SubscriberFormSchema } from './schema';
-import useOptimisticSubscribers from '@/hooks/useOptimisticSubscribers';
+import useOptimistic from '@/hooks/useOptimistic';
 
 interface Props {
   subscribers: Subscriber[];
 }
 
 const AddSubscriberForm = ({ subscribers }: Props) => {
-  const { setOptimisticSubscribers } = useOptimisticSubscribers({
-    subscribers,
+  const { setOptimisticData } = useOptimistic({
+    data: subscribers,
   });
 
   const {
@@ -31,9 +31,9 @@ const AddSubscriberForm = ({ subscribers }: Props) => {
   });
 
   const addSubscriber = async (formData: SubscriberFormSchema) => {
-    setOptimisticSubscribers({
+    setOptimisticData({
       action: Action.ADD,
-      subscriber: {
+      item: {
         id: String(Math.random()),
         email: formData.email,
         name: formData.name,

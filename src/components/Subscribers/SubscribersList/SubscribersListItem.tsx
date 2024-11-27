@@ -1,13 +1,13 @@
 'use client';
 
 import { Action, Subscriber } from '@/types';
-import Button from '../../Button';
 import { deleteSubscriberAction } from '@/utils/actions/subscriberActions';
+import Button from '../../Button';
 import toast from 'react-hot-toast';
 
 interface Props {
   listElement: Subscriber;
-  setOptimisticData: (action: { action: Action; subscriber: Subscriber }) => void;
+  setOptimisticData: (action: { action: Action; item: Subscriber }) => void;
 }
 
 const SubscribersListItem = ({ listElement, setOptimisticData }: Props) => {
@@ -16,7 +16,7 @@ const SubscribersListItem = ({ listElement, setOptimisticData }: Props) => {
   const deleteUser = async () => {
     setOptimisticData({
       action: Action.DELETE,
-      subscriber: { id, email, name, createdAt },
+      item: { id, email, name, createdAt },
     });
 
     const response = await deleteSubscriberAction(id);
