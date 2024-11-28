@@ -1,6 +1,5 @@
 'use client';
 
-import { sendEmailAction } from '@/utils/actions/emailActions';
 import Button from '../Button';
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
@@ -9,6 +8,7 @@ import { SendEmailSchema, sendEmailSchema } from './schema';
 import Input from '../Input';
 import TextArea from '../TextArea';
 import { clsx } from 'clsx';
+import { sendEmailAction } from '@/app/actions/emailActions';
 
 interface Props {
   className?: string;

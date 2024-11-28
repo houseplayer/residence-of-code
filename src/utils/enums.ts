@@ -5,3 +5,7 @@ export enum routes {
   login = '/api/auth/login',
   logout = '/api/auth/logout',
 }
+
+export enum userRole {
+  admin = 'admin',
+}

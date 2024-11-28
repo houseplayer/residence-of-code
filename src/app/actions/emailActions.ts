@@ -1,9 +1,9 @@
 'use server';
 
 import { sendEmailSchema, SendEmailSchema } from '@/components/emailForm/schema';
-import { validateData } from '../validateData';
+import { validateData } from '@/utils/validateData';
 import { transporter } from '../../lib/nodemailer';
-import { getSubscribersEmails } from '../getSubscribers';
+import { getSubscribersEmails } from '@/utils/getSubscribers';
 
 export const sendEmailAction = async (formData: SendEmailSchema) => {
   try {

@@ -1,14 +1,14 @@
 'use client';
 
-import { addSubscriberAction } from '@/utils/actions/subscriberActions';
+import { addSubscriberAction } from '@/app/actions/subscriberActions';
 import Button from '../../Button';
 import Input from '../../Input';
 import { Action, Subscriber } from '@/types';
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { subscriberFormSchema, SubscriberFormSchema } from './schema';
 import useOptimistic from '@/hooks/useOptimistic';
+import { subscriberFormSchema, SubscriberFormSchema } from './schema';
 
 interface Props {
   subscribers: Subscriber[];

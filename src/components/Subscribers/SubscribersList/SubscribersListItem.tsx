@@ -1,7 +1,7 @@
 'use client';
 
 import { Action, Subscriber } from '@/types';
-import { deleteSubscriberAction } from '@/utils/actions/subscriberActions';
+import { deleteSubscriberAction } from '@/app/actions/subscriberActions';
 import Button from '../../Button';
 import toast from 'react-hot-toast';
 

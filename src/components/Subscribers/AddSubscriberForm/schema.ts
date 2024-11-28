@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { emailRegex } from '@/utils/regex/regex';
+import { emailRegex } from '@/utils/regex';
 
 export const subscriberFormSchema = z.object({
   email: z.string().regex(emailRegex, 'enter a valid email'),

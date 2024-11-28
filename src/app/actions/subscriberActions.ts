@@ -6,7 +6,7 @@ import {
 } from '@/components/Subscribers/AddSubscriberForm/schema';
 import prisma from '../../lib/prisma';
 import { revalidatePath } from 'next/cache';
-import { validateData } from '../validateData';
+import { validateData } from '@/utils/validateData';
 
 export const addSubscriberAction = async (formData: SubscriberFormSchema) => {
   try {
