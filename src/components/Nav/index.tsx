@@ -4,8 +4,8 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
 import CustomLink from '../Link';
 import { usePathname } from 'next/navigation';
-import { routes } from '@/utils/enums';
-import { isAdmin } from '@/utils/isUserAdmin';
+import { routes, userRole } from '@/utils/enums';
+import { checkPermission } from '@/utils/checkPermission';
 
 const Nav = () => {
   const { user } = useUser();
@@ -26,15 +26,23 @@ const Nav = () => {
   );
 
   const publicRoutes = (
-    <Link
-      href={routes.home}
-      className={currentPath === routes.home ? 'border-slate-700 border-b-2 ml-4' : 'ml-4'}
-    >
-      Home
-    </Link>
+    <>
+      <Link
+        href={routes.home}
+        className={currentPath === routes.home ? 'border-slate-700 border-b-2 ml-4' : 'ml-4'}
+      >
+        Home
+      </Link>
+      <Link
+        href={routes.blog}
+        className={currentPath === routes.blog ? 'border-slate-700 border-b-2 ml-4' : 'ml-4'}
+      >
+        Blog
+      </Link>
+    </>
   );
 
-  const adminRoutes = isAdmin(user) && (
+  const adminRoutes = checkPermission(user, userRole.admin) && (
     <Link
       href={routes.admin}
       className={currentPath === routes.admin ? 'border-slate-700 border-b-2 ml-4' : 'ml-4'}
@@ -44,11 +52,11 @@ const Nav = () => {
   );
 
   return (
-    <>
+    <div>
       {authRoutes}
       {publicRoutes}
       {adminRoutes}
-    </>
+    </div>
   );
 };
 

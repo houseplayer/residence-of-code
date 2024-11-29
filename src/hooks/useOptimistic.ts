@@ -1,14 +1,14 @@
-import { Action, Subscriber } from '@/types';
+import { Action } from '@/types';
 import { experimental_useOptimistic } from 'react';
 
 interface Props {
-  data: any[];
+  data: Record<string, any>[];
 }
 
 const useOptimistic = ({ data }: Props) => {
   const [optimisticData, setOptimisticData] = experimental_useOptimistic(
     data,
-    (state, { action, item }: { action: Action; item: any }) => {
+    (state, { action, item }: { action: Action; item: Record<string, any> }) => {
       switch (action) {
         case 'ADD':
           return [item, ...state];
