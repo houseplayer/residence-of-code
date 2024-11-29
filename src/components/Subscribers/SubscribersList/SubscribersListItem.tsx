@@ -6,7 +6,7 @@ import Button from '../../Button';
 import toast from 'react-hot-toast';
 
 interface Props {
-  listElement: Subscriber;
+  listElement: Record<string, any>;
   setOptimisticData: (action: { action: Action; item: Subscriber }) => void;
 }
 

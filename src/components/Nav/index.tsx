@@ -35,7 +35,7 @@ const Nav = () => {
       </Link>
       <Link
         href={routes.blog}
-        className={currentPath === routes.blog ? 'border-slate-700 border-b-2 ml-4' : 'ml-4'}
+        className={currentPath.includes(routes.blog) ? 'border-slate-700 border-b-2 ml-4' : 'ml-4'}
       >
         Blog
       </Link>

@@ -24,7 +24,7 @@ const SubscribersList = ({ subscribers }: Props) => {
         <p className="basis-1/3">name</p>
         <p className="basis-1/12"></p>
       </div>
-      {optimisticData?.map((listElement: Subscriber) => (
+      {optimisticData?.map((listElement: Record<string, any>) => (
         <SubscribersListItem
           key={listElement.id}
           listElement={listElement}
