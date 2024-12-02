@@ -7,12 +7,8 @@ interface Props {
 }
 
 const BlogPost = async ({ blogId }: Props) => {
-  const markdown = fs.readFileSync(
-    `${process.cwd()}/src/public/${routes.blog}/${blogId}.md`,
-    'utf-8',
-  );
+  const markdown = fs.readFileSync(`${process.cwd()}/public/${routes.blog}/${blogId}.md`, 'utf-8');
   return <MarkdownToHtml markdown={markdown} />;
-  // return <p>{blogId}</p>;
 };
 
 export default BlogPost;

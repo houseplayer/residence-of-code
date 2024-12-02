@@ -11,9 +11,32 @@ datasource db {
   directUrl         = env("DIRECT_URL")
 }
 
-model Subscribers {
-  id                String        @id @default(uuid())  
-  email             String        @unique
+model Subscriber {
+  id                String            @id @default(uuid())  
+  email             String            @unique
   name              String
-  createdAt         DateTime      @default(now())
+  createdAt         DateTime          @default(now())
+}
+
+model Post {
+  id                String            @id @default(uuid())  
+  title             String
+  author            String
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  categories        PostsCategories[]
+}
+
+model Category {
+  id                String                @id @default(uuid())  
+  name              String
+  posts             PostsCategories[]
+}
+
+model PostsCategories {
+  post              Post                @relation(fields: [postId], references: [id])
+  postId            String
+  category          Category            @relation(fields: [categoryId], references: [id])
+  categoryId        String
+  @@id([postId, categoryId])
 }

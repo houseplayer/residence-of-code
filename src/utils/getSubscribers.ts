@@ -2,7 +2,7 @@ import { Subscriber } from '@/types';
 import prisma from '@/lib/prisma';
 
 export const getSubscribers = async () => {
-  const subscribers: Subscriber[] = await prisma.subscribers.findMany({
+  const subscribers: Subscriber[] = await prisma.subscriber.findMany({
     orderBy: { createdAt: 'desc' },
   });
 
