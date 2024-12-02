@@ -10,12 +10,12 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const blogList = (
     <ul className="my-4">
       {blogTitle.map((title) => (
-        <li
-          key={title}
-          className="border-b-1 first-of-type:border-t-1 border-gray-400 py-1 hover:bg-gray-100"
+        <Link
+          href={`${routes.blog}/${title}`}
+          className="block border-b-1 first-of-type:border-t-1 border-gray-400 py-1 hover:bg-gray-100"
         >
-          <Link href={`${routes.blog}/${title}`}>{title}</Link>
-        </li>
+          <li key={title}>{title}</li>
+        </Link>
       ))}
     </ul>
   );
