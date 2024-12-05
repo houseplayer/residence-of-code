@@ -59,7 +59,7 @@ const Nav = () => {
         {publicRoutes}
         {adminRoutes}
       </div>
-      <UserIcon />
+      {user && <UserIcon user={user} />}
     </div>
   );
 };

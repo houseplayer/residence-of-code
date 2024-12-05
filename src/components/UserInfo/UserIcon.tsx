@@ -2,16 +2,14 @@
 
 import { routes } from '@/utils/enums';
 import { getUserInitials } from '@/utils/getuserInitials';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { UserProfile } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
 
-const UserIcon = () => {
-  const { user } = useUser();
+interface Props {
+  user: UserProfile;
+}
 
-  if (!user) {
-    return;
-  }
-
+const UserIcon = ({ user }: Props) => {
   const userInitials = getUserInitials(user);
 
   return (
