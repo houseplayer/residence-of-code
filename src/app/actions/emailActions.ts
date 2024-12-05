@@ -1,6 +1,6 @@
 'use server';
 
-import { sendEmailSchema, SendEmailSchema } from '@/components/emailForm/schema';
+import { sendEmailSchema, SendEmailSchema } from '@/components/EmailForm/schema';
 import { validateData } from '@/utils/validateData';
 import { transporter } from '../../lib/nodemailer';
 import { getSubscribersEmails } from '@/utils/getSubscribers';

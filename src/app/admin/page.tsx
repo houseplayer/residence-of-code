@@ -1,4 +1,4 @@
-import EmailForm from '@/components/emailForm';
+import EmailForm from '@/components/EmailForm';
 import SubscribersList from '@/components/Subscribers/SubscribersList';
 import { getSubscribers } from '@/utils/getSubscribers';
 import { routes, userRole } from '@/utils/enums';

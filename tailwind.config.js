@@ -14,6 +14,9 @@ module.exports = {
       borderWidth: {
         1: '1px',
       },
+      screens: {
+        xs: '440px',
+      },
     },
   },
   plugins: [],

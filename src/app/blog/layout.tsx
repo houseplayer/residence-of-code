@@ -24,11 +24,14 @@ const Layout = async ({ children }: { children: ReactNode }) => {
             href={`${routes.blog}/${id}`}
             className="block border-b-1 first-of-type:border-t-1 border-gray-400 py-1 hover:bg-gray-100"
           >
-            <li className="flex justify-between">
+            <li className="flex justify-between flex-col xs:flex-row">
               <div>{title}</div>
               <div>
                 {categories.map((category) => (
-                  <span className="bg-gray-300 rounded ml-2 text-[0.6rem] px-2 py-1" key={category}>
+                  <span
+                    className="inline-block bg-gray-300 rounded mr-2 my-1 text-[0.6rem] px-2 py-1"
+                    key={category}
+                  >
                     {category}
                   </span>
                 ))}
