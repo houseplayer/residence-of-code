@@ -6,6 +6,7 @@ import CustomLink from '../Link';
 import { usePathname } from 'next/navigation';
 import { routes, userRole } from '@/utils/enums';
 import { checkPermission } from '@/utils/checkPermission';
+import UserIcon from '../UserInfo/UserIcon';
 
 const Nav = () => {
   const { user } = useUser();
@@ -52,10 +53,13 @@ const Nav = () => {
   );
 
   return (
-    <div>
-      {authRoutes}
-      {publicRoutes}
-      {adminRoutes}
+    <div className="flex items-center justify-between">
+      <div>
+        {authRoutes}
+        {publicRoutes}
+        {adminRoutes}
+      </div>
+      <UserIcon />
     </div>
   );
 };
