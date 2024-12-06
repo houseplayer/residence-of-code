@@ -1,3 +1,8 @@
+export interface Category {
+  id: string;
+  name: string;
+}
+
 export interface Subscriber {
   id: string;
   email: string;

@@ -1,4 +1,4 @@
-import { mappedPost, Post } from '@/types';
+import { mappedPost, Post, Category } from '@/types';
 
 export const mapPosts = (posts: Post[]) => {
   return posts.reduce((acc: mappedPost[], post) => {
@@ -19,4 +19,14 @@ export const mapPosts = (posts: Post[]) => {
     }
     return acc;
   }, []);
+};
+
+export const filterPosts = (posts: mappedPost[], selectedCategories: string[]) => {
+  return posts.filter((post) =>
+    post.categories.some((category) => selectedCategories.includes(category)),
+  );
+};
+
+export const mapCategories = (selectedCategories: Category[]) => {
+  return selectedCategories.map((category) => category.name);
 };
