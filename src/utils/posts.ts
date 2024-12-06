@@ -1,4 +1,16 @@
-import { mappedPost, Post, Category } from '@/types';
+import prisma from '@/lib/prisma';
+import { mappedPost, Post } from '@/types';
+
+export const getPosts = async () => {
+  const posts: Post[] = await prisma.postsCategories.findMany({
+    select: {
+      post: { select: { id: true, title: true, author: true, createdAt: true, updatedAt: true } },
+      category: { select: { name: true } },
+    },
+  });
+
+  return posts;
+};
 
 export const mapPosts = (posts: Post[]) => {
   return posts.reduce((acc: mappedPost[], post) => {
@@ -25,8 +37,4 @@ export const filterPosts = (posts: mappedPost[], selectedCategories: string[]) =
   return posts.filter((post) =>
     post.categories.some((category) => selectedCategories.includes(category)),
   );
-};
-
-export const mapCategories = (selectedCategories: Category[]) => {
-  return selectedCategories.map((category) => category.name);
 };

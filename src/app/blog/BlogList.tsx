@@ -2,8 +2,9 @@
 
 import Multiselect from '@/components/Multiselect';
 import { Category, Post } from '@/types';
+import { mapCategories } from '@/utils/categories';
+import { filterPosts, mapPosts } from '@/utils/posts';
 import { routes } from '@/utils/enums';
-import { filterPosts, mapCategories, mapPosts } from '@/utils/posts';
 import Link from 'next/link';
 import { MultiSelectChangeEvent } from 'primereact/multiselect';
 import { useState } from 'react';
