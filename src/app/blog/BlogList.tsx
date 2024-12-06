@@ -25,7 +25,7 @@ const BlogList = ({ posts, categories }: Props) => {
       <Multiselect
         options={categories}
         placeholder="categories"
-        className="border-1 border-black w-full my-2 text-sm py-1 rounded-none"
+        className="border-1 border-black w-full my-2 text-sm rounded-none"
         selectedOptions={selectedCategories}
         onChange={(e: MultiSelectChangeEvent) => setSelectedCategories(e.value)}
       />
