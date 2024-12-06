@@ -21,10 +21,11 @@ const BlogList = ({ posts, categories }: Props) => {
 
   return (
     <>
+      <p className="mt-4">Select blog category</p>
       <Multiselect
         options={categories}
-        placeholder="Select category"
-        className="border-1 border-black w-full mt-2 text-sm"
+        placeholder="categories"
+        className="border-1 border-black w-full my-2 text-sm py-1 rounded-none"
         selectedOptions={selectedCategories}
         onChange={(e: MultiSelectChangeEvent) => setSelectedCategories(e.value)}
       />

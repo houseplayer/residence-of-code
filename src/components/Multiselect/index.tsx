@@ -1,4 +1,4 @@
-import 'primereact/resources/themes/vela-blue/theme.css';
+import 'primereact/resources/themes/mira/theme.css';
 import { MultiSelect, MultiSelectChangeEvent } from 'primereact/multiselect';
 
 interface Option {
