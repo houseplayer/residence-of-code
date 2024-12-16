@@ -1,8 +1,8 @@
-import { Action } from '@/types';
-import { experimental_useOptimistic } from 'react';
+import { Action } from "@/types"
+import { experimental_useOptimistic } from "react"
 
 interface Props {
-  data: Record<string, any>[];
+  data: Record<string, any>[]
 }
 
 const useOptimistic = ({ data }: Props) => {
@@ -10,16 +10,16 @@ const useOptimistic = ({ data }: Props) => {
     data,
     (state, { action, item }: { action: Action; item: Record<string, any> }) => {
       switch (action) {
-        case 'ADD':
-          return [item, ...state];
-        case 'DELETE':
-          return state.filter(({ id }) => id !== item.id);
+        case "ADD":
+          return [item, ...state]
+        case "DELETE":
+          return state.filter(({ id }) => id !== item.id)
         default:
-          return state;
+          return state
       }
     },
-  );
-  return { optimisticData, setOptimisticData };
-};
+  )
+  return { optimisticData, setOptimisticData }
+}
 
-export default useOptimistic;
+export default useOptimistic

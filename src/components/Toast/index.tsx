@@ -1,4 +1,4 @@
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast"
 
 const Toast = () => {
   return (
@@ -8,7 +8,7 @@ const Toast = () => {
         duration: 3000,
       }}
     />
-  );
-};
+  )
+}
 
-export default Toast;
+export default Toast

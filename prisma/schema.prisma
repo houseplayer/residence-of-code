@@ -19,24 +19,17 @@ model Subscriber {
 }
 
 model Post {
-  id                String            @id @default(uuid())  
-  title             String
-  author            String
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime          @updatedAt
-  categories        PostsCategories[]
+  id         String         @id @default(uuid())
+  title      String
+  author     String
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  categories Category[]     @relation("PostCategories")
 }
 
 model Category {
-  id                String                @id @default(uuid())  
-  name              String
-  posts             PostsCategories[]
+  id    String              @id @default(uuid())
+  name  String
+  posts Post[]              @relation("PostCategories")
 }
 
-model PostsCategories {
-  post              Post                @relation(fields: [postId], references: [id])
-  postId            String
-  category          Category            @relation(fields: [categoryId], references: [id])
-  categoryId        String
-  @@id([postId, categoryId])
-}

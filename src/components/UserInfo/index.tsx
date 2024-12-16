@@ -1,9 +1,9 @@
-'use client';
+"use client"
 
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from "@auth0/nextjs-auth0/client"
 
 const UserInfo = () => {
-  const { user } = useUser();
+  const { user } = useUser()
 
   return (
     user && (
@@ -13,7 +13,7 @@ const UserInfo = () => {
         <p> {user.updated_at}</p>
       </div>
     )
-  );
-};
+  )
+}
 
-export default UserInfo;
+export default UserInfo

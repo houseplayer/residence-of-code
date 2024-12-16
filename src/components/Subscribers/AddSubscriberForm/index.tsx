@@ -1,23 +1,23 @@
-'use client';
+"use client"
 
-import { addSubscriberAction } from '@/app/actions/subscriberActions';
-import Button from '../../Button';
-import Input from '../../Input';
-import { Action, Subscriber } from '@/types';
-import toast from 'react-hot-toast';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import useOptimistic from '@/hooks/useOptimistic';
-import { subscriberFormSchema, SubscriberFormSchema } from './schema';
+import { addSubscriberAction } from "@/app/actions/subscriberActions"
+import Button from "../../Button"
+import Input from "../../Input"
+import { Action, Subscriber } from "@/types"
+import toast from "react-hot-toast"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import useOptimistic from "@/hooks/useOptimistic"
+import { subscriberFormSchema, SubscriberFormSchema } from "./schema"
 
 interface Props {
-  subscribers: Subscriber[];
+  subscribers: Subscriber[]
 }
 
 const AddSubscriberForm = ({ subscribers }: Props) => {
   const { setOptimisticData } = useOptimistic({
     data: subscribers,
-  });
+  })
 
   const {
     register,
@@ -26,9 +26,9 @@ const AddSubscriberForm = ({ subscribers }: Props) => {
     formState: { errors, isSubmitting },
   } = useForm<SubscriberFormSchema>({
     resolver: zodResolver(subscriberFormSchema),
-    mode: 'onSubmit',
-    reValidateMode: 'onChange',
-  });
+    mode: "onSubmit",
+    reValidateMode: "onChange",
+  })
 
   const addSubscriber = async (formData: SubscriberFormSchema) => {
     setOptimisticData({
@@ -39,17 +39,17 @@ const AddSubscriberForm = ({ subscribers }: Props) => {
         name: formData.name,
         createdAt: new Date(),
       },
-    });
+    })
 
-    const response = await addSubscriberAction(formData);
+    const response = await addSubscriberAction(formData)
 
     if (response.success) {
-      toast.success(response.message);
-      reset();
+      toast.success(response.message)
+      reset()
     } else {
-      toast.error(response.message);
+      toast.error(response.message)
     }
-  };
+  }
 
   return (
     <>
@@ -58,9 +58,9 @@ const AddSubscriberForm = ({ subscribers }: Props) => {
         className="flex justify-center flex-col w-72 my-4 mx-auto"
       >
         <h1 className="mx-auto font-semibold">Subscribe to our newsletter</h1>
-        <Input {...register('email')} error={errors.email?.message} placeholder="email" />
+        <Input {...register("email")} error={errors.email?.message} placeholder="email" />
         <Input
-          {...register('name')}
+          {...register("name")}
           error={errors.name?.message}
           placeholder="name"
           className="mt-2"
@@ -68,7 +68,7 @@ const AddSubscriberForm = ({ subscribers }: Props) => {
         <Button label="subscribe" className="mt-2" disabled={isSubmitting} />
       </form>
     </>
-  );
-};
+  )
+}
 
-export default AddSubscriberForm;
+export default AddSubscriberForm

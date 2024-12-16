@@ -1,32 +1,32 @@
-'use client';
+"use client"
 
-import { Action, Subscriber } from '@/types';
-import { deleteSubscriberAction } from '@/app/actions/subscriberActions';
-import Button from '../../Button';
-import toast from 'react-hot-toast';
+import { Action, Subscriber } from "@/types"
+import { deleteSubscriberAction } from "@/app/actions/subscriberActions"
+import Button from "../../Button"
+import toast from "react-hot-toast"
 
 interface Props {
-  listElement: Record<string, any>;
-  setOptimisticData: (action: { action: Action; item: Subscriber }) => void;
+  listElement: Record<string, any>
+  setOptimisticData: (action: { action: Action; item: Subscriber }) => void
 }
 
 const SubscribersListItem = ({ listElement, setOptimisticData }: Props) => {
-  const { email, name, id, createdAt } = listElement;
+  const { email, name, id, createdAt } = listElement
 
   const deleteUser = async () => {
     setOptimisticData({
       action: Action.DELETE,
       item: { id, email, name, createdAt },
-    });
+    })
 
-    const response = await deleteSubscriberAction(id);
+    const response = await deleteSubscriberAction(id)
 
     if (!response.success) {
-      toast.error(response.message);
+      toast.error(response.message)
     } else {
-      toast.success(response.message);
+      toast.success(response.message)
     }
-  };
+  }
 
   return (
     <div
@@ -40,7 +40,7 @@ const SubscribersListItem = ({ listElement, setOptimisticData }: Props) => {
         <Button label="X" className="w-8 h-8 flex items-center justify-center" />
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default SubscribersListItem;
+export default SubscribersListItem

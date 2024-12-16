@@ -1,19 +1,19 @@
-'use client';
+"use client"
 
-import { Subscriber } from '@/types';
-import SubscribersListItem from './SubscribersListItem';
-import useOptimistic from '@/hooks/useOptimistic';
+import { Subscriber } from "@/types"
+import SubscribersListItem from "./SubscribersListItem"
+import useOptimistic from "@/hooks/useOptimistic"
 
 export interface Props {
-  subscribers: Subscriber[];
+  subscribers: Subscriber[]
 }
 
 const SubscribersList = ({ subscribers }: Props) => {
   const { optimisticData, setOptimisticData } = useOptimistic({
     data: subscribers,
-  });
+  })
 
-  if (!subscribers.length) return;
+  if (!subscribers.length) return
 
   return (
     <div className="mb-4">
@@ -32,7 +32,7 @@ const SubscribersList = ({ subscribers }: Props) => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default SubscribersList;
+export default SubscribersList

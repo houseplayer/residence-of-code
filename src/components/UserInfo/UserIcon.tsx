@@ -1,16 +1,16 @@
-'use client';
+"use client"
 
-import { routes } from '@/utils/enums';
-import { getUserInitials } from '@/utils/getuserInitials';
-import { UserProfile } from '@auth0/nextjs-auth0/client';
-import Link from 'next/link';
+import { routes } from "@/utils/enums"
+import { getUserInitials } from "@/utils/getuserInitials"
+import { UserProfile } from "@auth0/nextjs-auth0/client"
+import Link from "next/link"
 
 interface Props {
-  user: UserProfile;
+  user: UserProfile
 }
 
 const UserIcon = ({ user }: Props) => {
-  const userInitials = getUserInitials(user);
+  const userInitials = getUserInitials(user)
 
   return (
     <Link
@@ -19,7 +19,7 @@ const UserIcon = ({ user }: Props) => {
     >
       {userInitials}
     </Link>
-  );
-};
+  )
+}
 
-export default UserIcon;
+export default UserIcon

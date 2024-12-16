@@ -1,24 +1,24 @@
-'use client';
+"use client"
 
-import Multiselect from '@/components/Multiselect';
-import { Category, Post } from '@/types';
-import { mapCategories } from '@/utils/categories';
-import { filterPosts, mapPosts } from '@/utils/posts';
-import { routes } from '@/utils/enums';
-import Link from 'next/link';
-import { MultiSelectChangeEvent } from 'primereact/multiselect';
-import { useState } from 'react';
+import Multiselect from "@/components/Multiselect"
+import { Category, Post } from "@/types"
+import { mapCategories } from "@/utils/categories"
+import { filterPosts, mapPosts } from "@/utils/posts"
+import { routes } from "@/utils/enums"
+import Link from "next/link"
+import { MultiSelectChangeEvent } from "primereact/multiselect"
+import { useState } from "react"
 
 interface Props {
-  posts: Post[];
-  categories: Category[];
+  posts: Post[]
+  categories: Category[]
 }
 
 const BlogList = ({ posts, categories }: Props) => {
-  const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
-  const mappedPosts = mapPosts(posts);
-  const mappedCategories = mapCategories(selectedCategories);
-  const filteredPosts = filterPosts(mappedPosts, mappedCategories);
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>([])
+  const mappedPosts = mapPosts(posts)
+  const mappedCategories = mapCategories(selectedCategories)
+  const filteredPosts = filterPosts(mappedPosts, mappedCategories)
 
   return (
     <>
@@ -54,7 +54,7 @@ const BlogList = ({ posts, categories }: Props) => {
         ))}
       </ul>
     </>
-  );
-};
+  )
+}
 
-export default BlogList;
+export default BlogList
