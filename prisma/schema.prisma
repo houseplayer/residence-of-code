@@ -1,35 +1,49 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  directUrl         = env("DIRECT_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Subscriber {
-  id                String            @id @default(uuid())  
-  email             String            @unique
-  name              String
-  createdAt         DateTime          @default(now())
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  createdAt DateTime @default(now())
 }
 
 model Post {
-  id         String         @id @default(uuid())
-  title      String
-  author     String
-  createdAt  DateTime       @default(now())
-  updatedAt  DateTime       @updatedAt
-  categories Category[]     @relation("PostCategories")
+  id             String           @id @default(uuid())
+  title          String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  PostCategories PostCategories[]
 }
 
 model Category {
-  id    String              @id @default(uuid())
-  name  String
-  posts Post[]              @relation("PostCategories")
+  id             String           @id @default(uuid())
+  name           String
+  PostCategories PostCategories[]
 }
 
+model Image {
+  id        String   @id @default(uuid())
+  name      String
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PostCategories {
+  A        String
+  B        String
+  Category Category @relation(fields: [A], references: [id], onDelete: Cascade)
+  Post     Post     @relation(fields: [B], references: [id], onDelete: Cascade)
+
+  @@id([A, B], map: "_PostCategories_AB_pkey")
+  @@index([B], map: "_PostCategories_B_index")
+  @@map("_PostCategories")
+}
