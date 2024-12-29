@@ -18,12 +18,14 @@ export const GET = async () => {
       throw new Error("CloudFront environment variables are not set")
     }
 
+    const privateKey = process.env.CLOUDFRONT_PRIVATE_KEY?.replace(/\\n/g, "\n")
+
     const signedImages = images.map((image) => ({
       ...image,
       url: getSignedUrl({
         url: `${process.env.CLOUDFRONT_URL}/${image.name}`,
         keyPairId: process.env.CLOUDFRONT_KEYPAIR_ID as string,
-        privateKey: process.env.CLOUDFRONT_PRIVATE_KEY as string,
+        privateKey,
         dateLessThan: new Date(Date.now() + 60 * 60 * 24 * 1000).toISOString(),
       }),
     }))
