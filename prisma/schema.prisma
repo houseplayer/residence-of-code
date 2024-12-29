@@ -16,17 +16,17 @@ model Subscriber {
 }
 
 model Post {
-  id             String           @id @default(uuid())
-  title          String
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  PostCategories PostCategories[]
+  id         String         @id @default(uuid())
+  title      String
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  categories Category[]     @relation("PostCategories")
 }
 
 model Category {
-  id             String           @id @default(uuid())
-  name           String
-  PostCategories PostCategories[]
+  id    String              @id @default(uuid())
+  name  String
+  posts Post[]              @relation("PostCategories")
 }
 
 model Image {
@@ -35,15 +35,4 @@ model Image {
   url       String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model PostCategories {
-  A        String
-  B        String
-  Category Category @relation(fields: [A], references: [id], onDelete: Cascade)
-  Post     Post     @relation(fields: [B], references: [id], onDelete: Cascade)
-
-  @@id([A, B], map: "_PostCategories_AB_pkey")
-  @@index([B], map: "_PostCategories_B_index")
-  @@map("_PostCategories")
 }

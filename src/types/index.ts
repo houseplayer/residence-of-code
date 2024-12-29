@@ -13,7 +13,6 @@ export interface Subscriber {
 export interface Post {
   id: string
   title: string
-  author: string
   createdAt: Date
   updatedAt: Date
   categories: {
@@ -24,7 +23,6 @@ export interface Post {
 export interface mappedPost {
   id: string
   title: string
-  author: string
   createdAt: Date
   updatedAt: Date
   categories: string[]

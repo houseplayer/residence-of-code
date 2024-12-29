@@ -4,7 +4,6 @@ describe("mapPosts", () => {
   const post1 = {
     id: "test id 1",
     title: "test title",
-    author: "test author",
     createdAt: new Date("2024-12-08"),
     updatedAt: new Date("2024-12-08"),
     categories: [
@@ -17,7 +16,6 @@ describe("mapPosts", () => {
   const post2 = {
     id: "test id 1",
     title: "test title",
-    author: "test author",
     createdAt: new Date("2024-12-08"),
     updatedAt: new Date("2024-12-08"),
     categories: [
@@ -33,7 +31,6 @@ describe("mapPosts", () => {
   const post3 = {
     id: "test id 2",
     title: "test title",
-    author: "test author",
     createdAt: new Date("2024-12-08"),
     updatedAt: new Date("2024-12-08"),
     categories: [
@@ -52,7 +49,6 @@ describe("mapPosts", () => {
       {
         id: "test id 1",
         title: "test title",
-        author: "test author",
         createdAt: new Date("2024-12-08"),
         updatedAt: new Date("2024-12-08"),
         categories: ["test category 1"],
@@ -65,7 +61,6 @@ describe("mapPosts", () => {
       {
         id: "test id 1",
         title: "test title",
-        author: "test author",
         createdAt: new Date("2024-12-08"),
         updatedAt: new Date("2024-12-08"),
         categories: ["test category 1", "test category 2"],
@@ -78,7 +73,6 @@ describe("mapPosts", () => {
       {
         id: "test id 1",
         title: "test title",
-        author: "test author",
         createdAt: new Date("2024-12-08"),
         updatedAt: new Date("2024-12-08"),
         categories: ["test category 1"],
@@ -86,7 +80,6 @@ describe("mapPosts", () => {
       {
         id: "test id 2",
         title: "test title",
-        author: "test author",
         createdAt: new Date("2024-12-08"),
         updatedAt: new Date("2024-12-08"),
         categories: ["test category 2"],
@@ -106,7 +99,6 @@ describe("filterPosts", () => {
           {
             id: "test id 1",
             title: "test title",
-            author: "test author",
             createdAt: new Date("2024-12-08"),
             updatedAt: new Date("2024-12-08"),
             categories: ["test category 1"],
