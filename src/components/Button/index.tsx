@@ -1,10 +1,12 @@
 "use client"
 
 import { clsx } from "clsx"
+import Loader from "@/components/Loader"
+import { ReactNode } from "react"
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string
-  disabledLabel?: string
+  disabledLabel?: string | ReactNode
   formAction?: (formData: FormData) => Promise<void>
 }
 

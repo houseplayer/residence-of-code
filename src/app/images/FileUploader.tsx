@@ -1,4 +1,5 @@
 import Button from "@/components/Button"
+import Loader from "@/components/Loader"
 import React, { useRef, useState } from "react"
 import { KeyedMutator } from "swr"
 
@@ -53,7 +54,7 @@ const ImageUploader = ({ mutate }: Props) => {
   }
 
   return (
-    <div className="flex flex-col items-center my-8 mx-auto">
+    <div className="flex flex-col items-center my-4 mx-auto">
       <form ref={formRef} className="flex flex-col items-center">
         <input
           className="mb-2 w-[210px]"
@@ -64,7 +65,9 @@ const ImageUploader = ({ mutate }: Props) => {
         <Button
           onClick={handleUpload}
           disabled={uploading}
-          label={uploading ? "Uploading..." : "Upload"}
+          label={"Upload"}
+          disabledLabel={<Loader size={30} />}
+          className="w-[100px] h-[40px]"
         />
       </form>
 
