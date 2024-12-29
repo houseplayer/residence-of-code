@@ -30,7 +30,7 @@ export const GET = async () => {
 
     return NextResponse.json({ images: signedImages })
   } catch (err) {
-    throw new Error("Error fetching images", err.message)
+    throw new Error(err)
   }
 }
 

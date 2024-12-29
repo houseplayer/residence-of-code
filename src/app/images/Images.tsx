@@ -1,4 +1,4 @@
-import useSWR, { KeyedMutator } from "swr"
+import { KeyedMutator } from "swr"
 import DeleteButton from "./DeleteButton"
 
 interface Props {
