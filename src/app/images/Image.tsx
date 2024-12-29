@@ -11,7 +11,7 @@ const Image = ({ url, id, mutate }: Props) => {
   return (
     <div className="flex flex-col items-center mb-12">
       <img
-        className="w-[260px] h-[347px] border-2 border-black mb-2"
+        className="w-[300px] aspect-[3/4] border-2 border-black mb-2"
         src={url}
         alt="downloaded image"
       />
