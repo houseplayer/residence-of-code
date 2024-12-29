@@ -6,12 +6,12 @@ import Images from "./Images"
 
 const Page = () => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json())
-  const { data: images, isLoading, mutate } = useSWR("/api/images", fetcher)
+  const { data, isLoading, mutate } = useSWR("/api/images", fetcher)
 
   return (
     <>
       <FileUploader mutate={mutate} />
-      <Images images={images} isLoading={isLoading} mutate={mutate} />
+      <Images data={data} isLoading={isLoading} mutate={mutate} />
     </>
   )
 }

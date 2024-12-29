@@ -56,7 +56,7 @@ const ImageUploader = ({ mutate }: Props) => {
     <div className="flex flex-col items-center my-8 mx-auto">
       <form ref={formRef} className="flex flex-col items-center">
         <input
-          className="flex justify-center mb-2"
+          className="mb-2 w-[200px]"
           type="file"
           accept="image/*"
           onChange={handleFileChange}
