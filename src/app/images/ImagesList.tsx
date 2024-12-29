@@ -1,6 +1,6 @@
-import ImageSkeleton from "./ImageSkeleton"
 import Image from "./Image"
 import { KeyedMutator } from "swr"
+import Loader from "@/components/Loader"
 
 export interface Image {
   name: string
@@ -17,7 +17,7 @@ interface Props {
 }
 
 const ImagesList = ({ data, isLoading, mutate }: Props) => {
-  if (isLoading) return <ImageSkeleton />
+  if (isLoading) return <Loader />
 
   const { images } = data
 
