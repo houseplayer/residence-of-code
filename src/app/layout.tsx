@@ -12,8 +12,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <UserProvider>
         <body>
+          <Nav />
           <main className="p-4">
-            <Nav />
             {children}
             <Toast />
           </main>

@@ -10,14 +10,12 @@ interface Props {
 }
 
 const UserIcon = ({ user }: Props) => {
-  const userInitials = getUserInitials(user)
-
   return (
     <Link
       href={routes.user}
-      className="w-[40px] h-[40px] bg-blue-800 text-white rounded-full inline-flex justify-center items-center"
+      className="w-[40px] h-[40px] text-white rounded-full inline-flex justify-center items-center overflow-hidden"
     >
-      {userInitials}
+      <img src={user.picture || undefined} alt={user.name || undefined} />
     </Link>
   )
 }
