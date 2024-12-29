@@ -40,6 +40,14 @@ const Nav = () => {
       >
         Blog
       </Link>
+      <Link
+        href={routes.images}
+        className={
+          currentPath.includes(routes.images) ? "border-slate-700 border-b-2 ml-4" : "ml-4"
+        }
+      >
+        Images
+      </Link>
     </>
   )
 
