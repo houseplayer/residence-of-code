@@ -1,5 +1,6 @@
 import { KeyedMutator } from "swr"
 import DeleteButton from "./DeleteButton"
+import { FaTrashAlt } from "react-icons/fa"
 
 export interface Image {
   name: string
@@ -16,23 +17,35 @@ interface Props {
 }
 
 const Images = ({ data, isLoading, mutate }: Props) => {
-  if (isLoading) return <p>Loading...</p>
+  if (isLoading)
+    return (
+      <div className="flex flex-col items-center">
+        <div className="flex flex-col mx-2 items-center justify-center w-[300px] h-[420px] border-2 border-black mb-2">
+          Loading ...
+        </div>
+        <FaTrashAlt className="mb-12" />
+      </div>
+    )
 
   const { images } = data
 
   const sortedImages = images.sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1))
 
   return (
-    <div className="flex flex-col items-center">
+    <>
       {sortedImages.map(({ name, id, url }) => {
         return (
-          <div className="flex flex-col mx-2 mb-12 items-center max-w-[300px]" key={name}>
-            <img className="mb-2 border-2 border-black" src={url} alt="downloaded image" />
+          <div className="flex flex-col items-center mb-12" key={name}>
+            <img
+              className="w-[300px] h-[420px] mb-2 border-2 border-black"
+              src={url}
+              alt="downloaded image"
+            />
             <DeleteButton id={id} mutate={mutate} />
           </div>
         )
       })}
-    </div>
+    </>
   )
 }
 
