@@ -2,7 +2,7 @@
 
 import useSWR from "swr"
 import FileUploader from "./FileUploader"
-import Images from "./Images"
+import Images from "./ImagesList"
 
 const Page = () => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json())
