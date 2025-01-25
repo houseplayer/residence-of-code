@@ -1,5 +1,6 @@
 import { FaTrashAlt } from "react-icons/fa"
 import { KeyedMutator } from "swr"
+import { deleteImageAction } from "../actions/imagesactions"
 
 interface Props {
   id: string
@@ -8,9 +9,7 @@ interface Props {
 
 const DeleteButton = ({ id, mutate }: Props) => {
   const handleDelete = async (id: string) => {
-    await fetch(`api/images/${id}`, {
-      method: "DELETE",
-    })
+    await deleteImageAction(id)
     mutate()
   }
 

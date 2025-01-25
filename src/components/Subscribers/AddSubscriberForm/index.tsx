@@ -9,12 +9,14 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import useOptimistic from "@/hooks/useOptimistic"
 import { subscriberFormSchema, SubscriberFormSchema } from "./schema"
+import { useToken } from "@/lib/zustand"
 
 interface Props {
   subscribers: Subscriber[]
 }
 
 const AddSubscriberForm = ({ subscribers }: Props) => {
+  const { token } = useToken()
   const { setOptimisticData } = useOptimistic({
     data: subscribers,
   })
@@ -41,7 +43,7 @@ const AddSubscriberForm = ({ subscribers }: Props) => {
       },
     })
 
-    const response = await addSubscriberAction(formData)
+    const response = await addSubscriberAction(formData, token)
 
     if (response.success) {
       toast.success(response.message)

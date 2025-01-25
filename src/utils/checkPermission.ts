@@ -1,5 +1,6 @@
-export const checkPermission = (user: { [x: string]: any } | undefined, requiredRole: string) => {
-  const userRoles = user?.["/roles"]
-
-  return userRoles?.includes(requiredRole) ? true : false
+export const checkPermission = (
+  user: { email: string; roles: string[] } | null,
+  requiredRole: string,
+) => {
+  return user?.roles?.includes(requiredRole) ? true : false
 }

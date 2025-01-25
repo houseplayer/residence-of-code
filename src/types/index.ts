@@ -32,3 +32,8 @@ export enum Action {
   ADD = "ADD",
   DELETE = "DELETE",
 }
+
+export interface User {
+  email: string
+  roles: string[]
+}

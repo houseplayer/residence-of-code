@@ -11,21 +11,17 @@ export interface Image {
 }
 
 interface Props {
-  data: { images: Image[] }
+  images: Image[]
   isLoading: boolean
   mutate: KeyedMutator<any>
 }
 
-const ImagesList = ({ data, isLoading, mutate }: Props) => {
+const ImagesList = ({ images, isLoading, mutate }: Props) => {
   if (isLoading) return <Loader />
-
-  const { images } = data
-
-  const sortedImages = images.sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1))
 
   return (
     <>
-      {sortedImages.map(({ name, id, url }) => {
+      {images.map(({ name, id, url }) => {
         return <Image key={name} id={id} url={url} mutate={mutate} />
       })}
     </>

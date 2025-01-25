@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma"
 import { mappedPost, Post } from "@/types"
 
 export const getPosts = async () => {
-  const posts: any[] = await prisma.post.findMany({
+  const posts: Post[] = await prisma.post.findMany({
     include: {
       categories: { select: { name: true } },
     },

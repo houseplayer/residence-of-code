@@ -4,11 +4,12 @@ export enum routes {
   blog = "/blog",
   images = "/images",
   user = "/user",
-  signup = "/api/auth/signup",
-  login = "/api/auth/login",
-  logout = "/api/auth/logout",
+  signup = "/signup",
+  login = "/login",
+  logout = "/logout",
 }
 
 export enum userRole {
+  user = "user",
   admin = "admin",
 }

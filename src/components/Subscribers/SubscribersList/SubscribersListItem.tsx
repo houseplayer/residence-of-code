@@ -4,6 +4,7 @@ import { Action, Subscriber } from "@/types"
 import { deleteSubscriberAction } from "@/app/actions/subscriberActions"
 import Button from "../../Button"
 import toast from "react-hot-toast"
+import { useToken } from "@/lib/zustand"
 
 interface Props {
   listElement: Record<string, any>
@@ -11,6 +12,8 @@ interface Props {
 }
 
 const SubscribersListItem = ({ listElement, setOptimisticData }: Props) => {
+  const { token } = useToken()
+
   const { email, name, id, createdAt } = listElement
 
   const deleteUser = async () => {
@@ -19,7 +22,7 @@ const SubscribersListItem = ({ listElement, setOptimisticData }: Props) => {
       item: { id, email, name, createdAt },
     })
 
-    const response = await deleteSubscriberAction(id)
+    const response = await deleteSubscriberAction(id, token)
 
     if (!response.success) {
       toast.error(response.message)

@@ -7,9 +7,11 @@ import {
 import prisma from "../../lib/prisma"
 import { revalidatePath } from "next/cache"
 import { validateData } from "@/utils/validateData"
+import { validateToken } from "@/utils/jwtToken"
 
-export const addSubscriberAction = async (formData: SubscriberFormSchema) => {
+export const addSubscriberAction = async (formData: SubscriberFormSchema, token: string | null) => {
   try {
+    await validateToken(token)
     validateData(formData, subscriberFormSchema)
     const { email, name } = formData
     await prisma.subscriber.create({ data: { email, name } })
@@ -24,8 +26,9 @@ export const addSubscriberAction = async (formData: SubscriberFormSchema) => {
   }
 }
 
-export const deleteSubscriberAction = async (id: string) => {
+export const deleteSubscriberAction = async (id: string, token: string | null) => {
   try {
+    await validateToken(token)
     await prisma.subscriber.delete({ where: { id: id } })
     return { success: true, message: "subscriber deleted" }
   } catch (error) {

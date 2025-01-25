@@ -2,6 +2,7 @@ import Button from "@/components/Button"
 import Loader from "@/components/Loader"
 import React, { useRef, useState } from "react"
 import { KeyedMutator } from "swr"
+import { postImageAction } from "../actions/imagesactions"
 
 interface Props {
   mutate: KeyedMutator<any>
@@ -32,19 +33,15 @@ const ImageUploader = ({ mutate }: Props) => {
       const formData = new FormData()
       formData.append("file", file)
 
-      const response = await fetch("api/images", {
-        method: "POST",
-        body: formData,
-      })
+      const response = await postImageAction(formData)
 
-      if (!response.ok) {
+      if (!response) {
         throw new Error("Failed to upload file.")
       }
 
       formRef.current?.reset()
       setFile(null)
       mutate()
-      await response.json()
     } catch (error) {
       console.error("Upload error:", error)
       setErrorMessage("An error occurred while uploading the file.")
