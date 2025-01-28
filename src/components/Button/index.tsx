@@ -1,6 +1,6 @@
 "use client"
 
-import { clsx } from "clsx"
+import { cn } from "@/utils/cn"
 import { ReactNode } from "react"
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -19,7 +19,7 @@ const Button = ({
 }: Props) => {
   return (
     <button
-      className={clsx(className, "bg-white border-black border-1 px-2 py-1 my-2")}
+      className={cn("bg-white border-black border-1 px-2 py-1 my-2", className)}
       formAction={formAction}
       disabled={disabled}
       onClick={onClick}

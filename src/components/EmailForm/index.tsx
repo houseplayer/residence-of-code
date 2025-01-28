@@ -7,8 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { SendEmailSchema, sendEmailSchema } from "./schema"
 import Input from "../Input"
 import TextArea from "../TextArea"
-import { clsx } from "clsx"
 import { sendEmailAction } from "@/app/actions/emailActions"
+import { cn } from "@/utils/cn"
 
 interface Props {
   className?: string
@@ -40,7 +40,7 @@ const EmailForm = ({ className }: Props) => {
   return (
     <form
       onSubmit={handleSubmit(sendEmail)}
-      className={clsx(className, "flex flex-col mx-auto my-4")}
+      className={cn("flex flex-col mx-auto my-4", className)}
     >
       <h1 className="mx-auto font-semibold">Send email to subscribers</h1>
       <Input {...register("title")} error={errors.title?.message} placeholder="title" />

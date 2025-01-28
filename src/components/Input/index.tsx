@@ -1,4 +1,4 @@
-import { clsx } from "clsx"
+import { cn } from "@/utils/cn"
 import { forwardRef } from "react"
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -9,7 +9,7 @@ const Input = forwardRef<HTMLInputElement, Props>(({ className, error, ...props 
   return (
     <>
       <input
-        className={clsx(className, "border-1 border-black px-2 py-1 my-2")}
+        className={cn("border-1 border-black px-2 py-1 my-2", className)}
         ref={ref}
         {...props}
       />

@@ -1,4 +1,4 @@
-import { clsx } from "clsx"
+import { cn } from "@/utils/cn"
 import { forwardRef } from "react"
 
 interface Props extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -10,7 +10,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, Props>(
     return (
       <>
         <textarea
-          className={clsx(className, "border-1 border-black px-2 py-1 my-2")}
+          className={cn("border-1 border-black px-2 py-1 my-2", className)}
           rows={rows || 5}
           ref={ref}
           {...props}
