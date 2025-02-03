@@ -1,6 +1,10 @@
 import { DNA } from "react-loader-spinner"
 
-const Loader = ({ size = 80 }) => {
+interface Props {
+  size?: number
+}
+
+const Loader = ({ size = 80 }: Props) => {
   return (
     <div className="flex justify-center">
       <DNA

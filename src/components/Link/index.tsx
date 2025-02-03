@@ -1,9 +1,7 @@
 import { cn } from "@/utils/cn"
 import { LinkHTMLAttributes } from "react"
 
-interface Props extends LinkHTMLAttributes<HTMLLinkElement> {}
-
-const Link = ({ href, className, children }: Props) => {
+const Link = ({ href, className, children }: LinkHTMLAttributes<HTMLLinkElement>) => {
   return (
     <a
       href={href}

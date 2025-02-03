@@ -32,7 +32,11 @@ export const deleteSubscriberAction = async (id: string, token: string | null) =
     await prisma.subscriber.delete({ where: { id: id } })
     return { success: true, message: "subscriber deleted" }
   } catch (error) {
-    return { success: false, message: "Delete subscriber failed. Please try again" }
+    return {
+      success: false,
+      message: "Delete subscriber failed. Please try again",
+      error: error.message,
+    }
   } finally {
     revalidatePath("/")
   }
