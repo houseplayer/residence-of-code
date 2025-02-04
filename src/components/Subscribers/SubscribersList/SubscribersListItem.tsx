@@ -7,43 +7,43 @@ import toast from "react-hot-toast"
 import { useToken } from "@/lib/zustand"
 
 interface Props {
-  listElement: Record<string, any>
-  setOptimisticData: (action: { action: Action; item: Subscriber }) => void
+	listElement: Record<string, any>
+	setOptimisticData: (action: { action: Action; item: Subscriber }) => void
 }
 
 const SubscribersListItem = ({ listElement, setOptimisticData }: Props) => {
-  const { token } = useToken()
+	const { token } = useToken()
 
-  const { email, name, id, createdAt } = listElement
+	const { email, name, id, createdAt } = listElement
 
-  const deleteUser = async () => {
-    setOptimisticData({
-      action: Action.DELETE,
-      item: { id, email, name, createdAt },
-    })
+	const deleteUser = async () => {
+		setOptimisticData({
+			action: Action.DELETE,
+			item: { id, email, name, createdAt },
+		})
 
-    const response = await deleteSubscriberAction(id, token)
+		const response = await deleteSubscriberAction(id, token)
 
-    if (!response.success) {
-      toast.error(response.message)
-    } else {
-      toast.success(response.message)
-    }
-  }
+		if (!response.success) {
+			toast.error(response.message)
+		} else {
+			toast.success(response.message)
+		}
+	}
 
-  return (
-    <div
-      key={id}
-      className="flex flex-col sm:flex-row items-center border-1 sm:border-0 sm:border-b-1 border-black w-72 sm:w-full mx-auto py-3 sm:py-2 mb-4 sm:mb-0"
-    >
-      <p className="basis-1/3">{createdAt.toLocaleDateString()}</p>
-      <p className="basis-1/3">{email}</p>
-      <p className="basis-1/3">{name}</p>
-      <form action={deleteUser} className="basis-1/12 mt-2 sm:mt-0">
-        <Button label="X" className="w-8 h-8 flex items-center justify-center" />
-      </form>
-    </div>
-  )
+	return (
+		<div
+			key={id}
+			className="flex flex-col sm:flex-row items-center border-1 sm:border-0 sm:border-b-1 border-black w-72 sm:w-full mx-auto py-3 sm:py-2 mb-4 sm:mb-0"
+		>
+			<p className="basis-1/3">{createdAt.toLocaleDateString()}</p>
+			<p className="basis-1/3">{email}</p>
+			<p className="basis-1/3">{name}</p>
+			<form action={deleteUser} className="basis-1/12 mt-2 sm:mt-0">
+				<Button label="X" className="w-8 h-8 flex items-center justify-center" />
+			</form>
+		</div>
+	)
 }
 
 export default SubscribersListItem

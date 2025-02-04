@@ -9,25 +9,25 @@ import { useRouter } from "next/navigation"
 import { routes } from "@/utils/enums"
 
 const Login = () => {
-  const router = useRouter()
-  const { setUser } = useUser()
-  const { setToken } = useToken()
+	const router = useRouter()
+	const { setUser } = useUser()
+	const { setToken } = useToken()
 
-  const handleLogin = async (formData: AuthFormSchema) => {
-    const { data, message, error } = await loginAction(formData)
+	const handleLogin = async (formData: AuthFormSchema) => {
+		const { data, message, error } = await loginAction(formData)
 
-    if (data) {
-      const { email, roles, token } = data
-      setToken(token)
-      setUser(email, roles)
-      toast.success(message)
-      router.push(routes.blog)
-    } else {
-      toast.error(error)
-    }
-  }
+		if (data) {
+			const { email, roles, token } = data
+			setToken(token)
+			setUser(email, roles)
+			toast.success(message)
+			router.push(routes.blog)
+		} else {
+			toast.error(error)
+		}
+	}
 
-  return <AuthForm onSubmit={handleLogin} label="Login" />
+	return <AuthForm onSubmit={handleLogin} label="Login" />
 }
 
 export default Login

@@ -12,65 +12,65 @@ import { subscriberFormSchema, SubscriberFormSchema } from "./schema"
 import { useToken } from "@/lib/zustand"
 
 interface Props {
-  subscribers: Subscriber[]
+	subscribers: Subscriber[]
 }
 
 const AddSubscriberForm = ({ subscribers }: Props) => {
-  const { token } = useToken()
-  const { setOptimisticData } = useOptimistic({
-    data: subscribers,
-  })
+	const { token } = useToken()
+	const { setOptimisticData } = useOptimistic({
+		data: subscribers,
+	})
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<SubscriberFormSchema>({
-    resolver: zodResolver(subscriberFormSchema),
-    mode: "onSubmit",
-    reValidateMode: "onChange",
-  })
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors, isSubmitting },
+	} = useForm<SubscriberFormSchema>({
+		resolver: zodResolver(subscriberFormSchema),
+		mode: "onSubmit",
+		reValidateMode: "onChange",
+	})
 
-  const addSubscriber = async (formData: SubscriberFormSchema) => {
-    setOptimisticData({
-      action: Action.ADD,
-      item: {
-        id: String(Math.random()),
-        email: formData.email,
-        name: formData.name,
-        createdAt: new Date(),
-      },
-    })
+	const addSubscriber = async (formData: SubscriberFormSchema) => {
+		setOptimisticData({
+			action: Action.ADD,
+			item: {
+				id: String(Math.random()),
+				email: formData.email,
+				name: formData.name,
+				createdAt: new Date(),
+			},
+		})
 
-    const response = await addSubscriberAction(formData, token)
+		const response = await addSubscriberAction(formData, token)
 
-    if (response.success) {
-      toast.success(response.message)
-      reset()
-    } else {
-      toast.error(response.message)
-    }
-  }
+		if (response.success) {
+			toast.success(response.message)
+			reset()
+		} else {
+			toast.error(response.message)
+		}
+	}
 
-  return (
-    <>
-      <form
-        onSubmit={handleSubmit(addSubscriber)}
-        className="flex justify-center flex-col w-72 my-4 mx-auto"
-      >
-        <h1 className="mx-auto font-semibold">Subscribe to our newsletter</h1>
-        <Input {...register("email")} error={errors.email?.message} placeholder="email" />
-        <Input
-          {...register("name")}
-          error={errors.name?.message}
-          placeholder="name"
-          className="mt-2"
-        />
-        <Button label="subscribe" className="mt-2" disabled={isSubmitting} />
-      </form>
-    </>
-  )
+	return (
+		<>
+			<form
+				onSubmit={handleSubmit(addSubscriber)}
+				className="flex justify-center flex-col w-72 my-4 mx-auto"
+			>
+				<h1 className="mx-auto font-semibold">Subscribe to our newsletter</h1>
+				<Input {...register("email")} error={errors.email?.message} placeholder="email" />
+				<Input
+					{...register("name")}
+					error={errors.name?.message}
+					placeholder="name"
+					className="mt-2"
+				/>
+				<Button label="subscribe" className="mt-2" disabled={isSubmitting} />
+			</form>
+		</>
+	)
 }
 
 export default AddSubscriberForm

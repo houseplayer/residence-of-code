@@ -9,22 +9,22 @@ import { routes, userRole } from "@/utils/enums"
 import { redirect } from "next/navigation"
 
 interface Props {
-  subscribers: Subscriber[]
+	subscribers: Subscriber[]
 }
 
 const Admin = ({ subscribers }: Props) => {
-  const { user } = useUser()
+	const { user } = useUser()
 
-  if (!checkPermission(user, userRole.admin)) {
-    redirect(routes.login)
-  }
+	if (!checkPermission(user, userRole.admin)) {
+		redirect(routes.login)
+	}
 
-  return (
-    <>
-      <EmailForm className="w-72" />
-      <SubscribersList subscribers={subscribers} />
-    </>
-  )
+	return (
+		<>
+			<EmailForm className="w-72" />
+			<SubscribersList subscribers={subscribers} />
+		</>
+	)
 }
 
 export default Admin

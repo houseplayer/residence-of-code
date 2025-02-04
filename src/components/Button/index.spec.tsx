@@ -2,22 +2,22 @@ import { render, screen } from "@testing-library/react"
 import Button from "."
 
 describe("Button", () => {
-  it("should render disabled button", () => {
-    render(<Button label="click" />)
+	it("should render disabled button", () => {
+		render(<Button label="click" />)
 
-    const button = screen.getByRole("button")
+		const button = screen.getByRole("button")
 
-    expect(button).toBeInTheDocument()
-    expect(button).toHaveTextContent(/click/i)
-  })
+		expect(button).toBeInTheDocument()
+		expect(button).toHaveTextContent(/click/i)
+	})
 
-  it("should render button", () => {
-    render(<Button label="click" disabled />)
+	it("should render button", () => {
+		render(<Button label="click" disabled />)
 
-    const button = screen.getByRole("button")
+		const button = screen.getByRole("button")
 
-    expect(button).toBeInTheDocument()
-    expect(button).toHaveTextContent(/saving.../i)
-    expect(button).toHaveAttribute("disabled")
-  })
+		expect(button).toBeInTheDocument()
+		expect(button).toHaveTextContent(/saving.../i)
+		expect(button).toHaveAttribute("disabled")
+	})
 })

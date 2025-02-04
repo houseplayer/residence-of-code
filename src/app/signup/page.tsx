@@ -8,19 +8,18 @@ import { useRouter } from "next/navigation"
 import { useUser } from "@/lib/zustand"
 
 const Signup = () => {
-  const router = useRouter()
-  const { user } = useUser()
+	const router = useRouter()
+	const { user } = useUser()
 
-  if (user) {
-    router.push(routes.blog)
-  }
+	if (user) {
+		router.push(routes.blog)
+	}
 
-  const handleSignup = async (formData: AuthFormSchema) => {
-    const response = await signupAction(formData)
-    console.log("response: ", response)
-  }
+	const handleSignup = async (formData: AuthFormSchema) => {
+		await signupAction(formData)
+	}
 
-  return <AuthForm onSubmit={handleSignup} label="Signup" />
+	return <AuthForm onSubmit={handleSignup} label="Signup" />
 }
 
 export default Signup

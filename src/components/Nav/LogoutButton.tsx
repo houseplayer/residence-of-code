@@ -5,15 +5,15 @@ import Button from "../Button"
 import { useRouter } from "next/navigation"
 
 const LogoutButton = () => {
-  const { removeUser } = useUser()
-  const router = useRouter()
+	const { removeUser } = useUser()
+	const router = useRouter()
 
-  const handleLogout = () => {
-    router.push("/")
-    removeUser()
-  }
+	const handleLogout = () => {
+		router.push("/")
+		removeUser()
+	}
 
-  return <Button onClick={handleLogout} className="ml-2 mr-4" label="Logout" />
+	return <Button onClick={handleLogout} className="ml-2 mr-4" label="Logout" />
 }
 
 export default LogoutButton
