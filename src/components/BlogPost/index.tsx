@@ -1,5 +1,5 @@
 import fs from "fs"
-import MarkdownToHtml from "../MarkdownToHTML/MarkdownToHTML"
+import MarkdownToHtml from "@/components/MarkdownToHTML/MarkdownToHTML"
 import { routes } from "@/utils/enums"
 
 interface Props {

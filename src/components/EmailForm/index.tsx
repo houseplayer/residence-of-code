@@ -1,14 +1,14 @@
 "use client"
 
-import Button from "../Button"
+import Button from "@/components/Button"
+import Input from "@/components/Input"
+import TextArea from "@/components/TextArea"
+import { sendEmailAction } from "@/actions/emailActions"
+import { cn } from "@/utils/cn"
 import toast from "react-hot-toast"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { SendEmailSchema, sendEmailSchema } from "./schema"
-import Input from "../Input"
-import TextArea from "../TextArea"
-import { sendEmailAction } from "@/app/actions/emailActions"
-import { cn } from "@/utils/cn"
 
 interface Props {
 	className?: string

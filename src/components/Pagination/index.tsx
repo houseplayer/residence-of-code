@@ -5,6 +5,8 @@ interface PaginationProps {
 	onPageChange: (page: number) => void
 }
 
+const SEPARATOR = "..."
+
 const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }: PaginationProps) => {
 	const totalPages = Math.ceil(totalItems / itemsPerPage)
 	const maxVisiblePages = 8
@@ -21,7 +23,7 @@ const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }: Pag
 
 			if (startPage > 1) {
 				pages.push(1)
-				if (startPage > 2) pages.push("...")
+				if (startPage > 2) pages.push(SEPARATOR)
 			}
 
 			for (let i = startPage; i <= endPage; i++) {
@@ -29,7 +31,7 @@ const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }: Pag
 			}
 
 			if (endPage < totalPages) {
-				if (endPage < totalPages - 1) pages.push("...")
+				if (endPage < totalPages - 1) pages.push(SEPARATOR)
 				pages.push(totalPages)
 			}
 		}
@@ -39,7 +41,7 @@ const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }: Pag
 	const visiblePages = getVisiblePages()
 
 	const handlePageClick = (page: number | string) => {
-		if (page === "...") return
+		if (page === SEPARATOR) return
 		onPageChange(page as number)
 	}
 
@@ -59,12 +61,12 @@ const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }: Pag
 					className={`px-3 py-1 rounded ${
 						page === currentPage
 							? "bg-blue-500 text-white"
-							: page === "..."
+							: page === SEPARATOR
 								? "bg-transparent cursor-default"
 								: "bg-gray-200 hover:bg-gray-300"
 					}`}
 					onClick={() => handlePageClick(page)}
-					disabled={page === "..."}
+					disabled={page === SEPARATOR}
 				>
 					{page}
 				</button>

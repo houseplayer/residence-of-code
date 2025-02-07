@@ -2,7 +2,7 @@
 
 import { sendEmailSchema, SendEmailSchema } from "@/components/EmailForm/schema"
 import { validateData } from "@/utils/validateData"
-import { transporter } from "../../lib/nodemailer"
+import { transporter } from "../lib/nodemailer"
 import { getSubscribersEmails } from "@/utils/getSubscribers"
 
 export const sendEmailAction = async (formData: SendEmailSchema) => {

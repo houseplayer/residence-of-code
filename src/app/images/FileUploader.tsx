@@ -2,7 +2,7 @@ import Button from "@/components/Button"
 import Loader from "@/components/Loader"
 import React, { useRef, useState } from "react"
 import { KeyedMutator } from "swr"
-import { postImageAction } from "../actions/imagesactions"
+import { postImageAction } from "@/actions/imagesactions"
 
 interface Props {
 	mutate: KeyedMutator<any>

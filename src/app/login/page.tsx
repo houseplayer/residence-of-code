@@ -1,12 +1,12 @@
 "use client"
 
-import AuthForm from "../../components/AuthForm"
-import { loginAction } from "../actions/authActions"
-import { AuthFormSchema } from "../../components/AuthForm/schema"
+import AuthForm from "@/components/AuthForm"
+import { loginAction } from "@/actions/authActions"
+import { AuthFormSchema } from "@/components/AuthForm/schema"
 import { useToken, useUser } from "@/lib/zustand"
+import { routes } from "@/utils/enums"
 import toast from "react-hot-toast"
 import { useRouter } from "next/navigation"
-import { routes } from "@/utils/enums"
 
 const Login = () => {
 	const router = useRouter()

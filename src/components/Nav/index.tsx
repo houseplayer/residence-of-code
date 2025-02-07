@@ -1,12 +1,12 @@
 "use client"
 
-import Link from "next/link"
-import CustomLink from "../Link"
-import { usePathname } from "next/navigation"
+import CustomLink from "@/components/Link"
+import { useUser } from "@/lib/zustand"
 import { routes, userRole } from "@/utils/enums"
 import { checkPermission } from "@/utils/checkPermission"
-import UserIcon from "../UserInfo/UserIcon"
-import { useUser } from "@/lib/zustand"
+import UserIcon from "@/components/UserInfo/UserIcon"
+import { usePathname } from "next/navigation"
+import Link from "next/link"
 import LogoutButton from "./LogoutButton"
 
 const Nav = () => {

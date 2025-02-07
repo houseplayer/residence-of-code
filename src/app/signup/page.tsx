@@ -1,11 +1,11 @@
 "use client"
 
-import AuthForm from "../../components/AuthForm"
-import { signupAction } from "../actions/authActions"
-import { AuthFormSchema } from "../../components/AuthForm/schema"
+import AuthForm from "@/components/AuthForm"
+import { AuthFormSchema } from "@/components/AuthForm/schema"
+import { signupAction } from "@/actions/authActions"
 import { routes } from "@/utils/enums"
-import { useRouter } from "next/navigation"
 import { useUser } from "@/lib/zustand"
+import { useRouter } from "next/navigation"
 
 const Signup = () => {
 	const router = useRouter()

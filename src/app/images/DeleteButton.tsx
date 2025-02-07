@@ -1,6 +1,6 @@
 import { FaTrashAlt } from "react-icons/fa"
 import { KeyedMutator } from "swr"
-import { deleteImageAction } from "../actions/imagesactions"
+import { deleteImageAction } from "@/actions/imagesactions"
 
 interface Props {
 	id: string

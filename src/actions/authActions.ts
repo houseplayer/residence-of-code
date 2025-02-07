@@ -2,7 +2,7 @@
 
 import { validateData } from "@/utils/validateData"
 import { generateToken } from "@/utils/jwtToken"
-import { authFormSchema, AuthFormSchema } from "../../components/AuthForm/schema"
+import { authFormSchema, AuthFormSchema } from "@/components/AuthForm/schema"
 import prisma from "@/lib/prisma"
 import bcrypt from "bcrypt"
 

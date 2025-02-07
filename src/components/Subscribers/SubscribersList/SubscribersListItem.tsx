@@ -1,10 +1,10 @@
 "use client"
 
 import { Action, Subscriber } from "@/types"
-import { deleteSubscriberAction } from "@/app/actions/subscriberActions"
-import Button from "../../Button"
-import toast from "react-hot-toast"
+import { deleteSubscriberAction } from "@/actions/subscriberActions"
+import Button from "@/components/Button"
 import { useToken } from "@/lib/zustand"
+import toast from "react-hot-toast"
 
 interface Props {
 	listElement: Record<string, any>

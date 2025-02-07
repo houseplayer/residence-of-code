@@ -4,7 +4,7 @@ import {
 	subscriberFormSchema,
 	SubscriberFormSchema,
 } from "@/components/Subscribers/AddSubscriberForm/schema"
-import prisma from "../../lib/prisma"
+import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
 import { validateData } from "@/utils/validateData"
 import { validateToken } from "@/utils/jwtToken"

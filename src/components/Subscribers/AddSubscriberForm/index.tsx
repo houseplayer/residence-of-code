@@ -1,15 +1,15 @@
 "use client"
 
-import { addSubscriberAction } from "@/app/actions/subscriberActions"
-import Button from "../../Button"
-import Input from "../../Input"
+import { addSubscriberAction } from "@/actions/subscriberActions"
+import Button from "@/components/Button"
+import Input from "@/components/Input"
+import { zodResolver } from "@hookform/resolvers/zod"
+import useOptimistic from "@/hooks/useOptimistic"
+import { useToken } from "@/lib/zustand"
 import { Action, Subscriber } from "@/types"
 import toast from "react-hot-toast"
 import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import useOptimistic from "@/hooks/useOptimistic"
 import { subscriberFormSchema, SubscriberFormSchema } from "./schema"
-import { useToken } from "@/lib/zustand"
 
 interface Props {
 	subscribers: Subscriber[]

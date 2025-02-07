@@ -1,7 +1,7 @@
 "use client"
 
 import { useUser } from "@/lib/zustand"
-import Button from "../Button"
+import Button from "@/components/Button"
 import { useRouter } from "next/navigation"
 
 const LogoutButton = () => {
